@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 723 1118" width="723" height="1118" role="img" aria-label="gitography terminal output">
+  <defs>
+    <linearGradient id="chrome" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#151527"/>
+      <stop offset="100%" stop-color="#101020"/>
+    </linearGradient>
+    <clipPath id="window">
+      <rect x="0" y="0" width="723" height="1118" rx="14"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#window)">
+    <rect width="723" height="1118" fill="#0a0a12"/>
+    <rect width="723" height="38" fill="url(#chrome)"/>
+    <circle cx="20" cy="19" r="6" fill="#ff5f57"/>
+    <circle cx="40" cy="19" r="6" fill="#febc2e"/>
+    <circle cx="60" cy="19" r="6" fill="#28c840"/>
+    <text x="361.5" y="23" fill="#5b6079" font-size="12" text-anchor="middle" font-family="ui-monospace, Consolas, monospace">gitography</text>
+    <g font-family="ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', monospace" font-size="13" xml:space="preserve">
+  <text x="22" y="52" fill="#5b6079"> </text>
+  <text x="22" y="72" fill="#8b7cff" font-weight="700"><tspan>  gitography ── expressjs/express</tspan></text>
+  <text x="22" y="92" fill="#5b6079"><tspan>  ──────────────────────────────────────────────────────────────────────────</tspan></text>
+  <text x="22" y="112" fill="#d7dbe8"><tspan>  6,182 commits  ·  400 contributors  ·  214 files  ·  17 years, 4 months</tspan></text>
+  <text x="22" y="132" fill="#d7dbe8"><tspan>  </tspan><tspan fill="#4ade80">+137,354</tspan><tspan fill="#d7dbe8"> / </tspan><tspan fill="#fb7185">-110,052</tspan><tspan fill="#d7dbe8"> lines  ·  1,369 active days  ·  6.8 commits/week</tspan></text>
+  <text x="22" y="152" fill="#5b6079"> </text>
+  <text x="22" y="172" fill="#d7dbe8"><tspan>  activity  ▁▁▂▁▂▅▁▂▁▅▁▁▂▅█▁▂▁▁█▅▂▅▁▅▃▅▁▁▁▁▂▂▁▄▁▂▅▁▁▁▂▆▁▂▄▁▁▂▁▁▅▁▁▆▂▁▄█▂  last 60 weeks</tspan></text>
+  <text x="22" y="192" fill="#d7dbe8"><tspan>  busiest   3 Dec 2009 · 77 commits</tspan></text>
+  <text x="22" y="212" fill="#d7dbe8"><tspan>  streak    15 days (13 May 2011 → 27 May 2011)</tspan></text>
+  <text x="22" y="232" fill="#5b6079"> </text>
+  <text x="22" y="252" fill="#d7dbe8"><tspan>  Contributors</tspan></text>
+  <text x="22" y="272" fill="#d7dbe8"><tspan>   1. Tj Holowaychuk         ██████████████████   3,881  62.8%</tspan></text>
+  <text x="22" y="292" fill="#d7dbe8"><tspan>   2. Douglas Christopher W… ██████░░░░░░░░░░░░   1,232  19.9%</tspan></text>
+  <text x="22" y="312" fill="#d7dbe8"><tspan>   3. Jonathan Ong           █░░░░░░░░░░░░░░░░░░      84  1.4%</tspan></text>
+  <text x="22" y="332" fill="#d7dbe8"><tspan>   4. Roman Shtylman         █░░░░░░░░░░░░░░░░░░      70  1.1%</tspan></text>
+  <text x="22" y="352" fill="#d7dbe8"><tspan>   5. dependabot[bot]        █░░░░░░░░░░░░░░░░░░      55  0.9%</tspan></text>
+  <text x="22" y="372" fill="#d7dbe8"><tspan>   6. Ulises Gascón          █░░░░░░░░░░░░░░░░░░      46  0.7%</tspan></text>
+  <text x="22" y="392" fill="#d7dbe8"><tspan>   7. Wes Todd               █░░░░░░░░░░░░░░░░░░      45  0.7%</tspan></text>
+  <text x="22" y="412" fill="#d7dbe8"><tspan>   8. Aaron Heckmann         █░░░░░░░░░░░░░░░░░░      44  0.7%</tspan></text>
+  <text x="22" y="432" fill="#d7dbe8"><tspan>   9. csausdev               █░░░░░░░░░░░░░░░░░░      34  0.5%</tspan></text>
+  <text x="22" y="452" fill="#d7dbe8"><tspan>  10. ciaranj                █░░░░░░░░░░░░░░░░░░      26  0.4%</tspan></text>
+  <text x="22" y="472" fill="#d7dbe8"><tspan>       … and 385 more</tspan></text>
+  <text x="22" y="492" fill="#5b6079"> </text>
+  <text x="22" y="512" fill="#d7dbe8"><tspan>  Languages (78% code)</tspan></text>
+  <text x="22" y="532" fill="#d7dbe8"><tspan>  JavaScript         ██████████████████ 77.2%</tspan></text>
+  <text x="22" y="552" fill="#d7dbe8"><tspan>  Markdown           ████░░░░░░░░░░░░░░ 18.8%</tspan></text>
+  <text x="22" y="572" fill="#d7dbe8"><tspan>  YAML               █░░░░░░░░░░░░░░░░░ 2.2%</tspan></text>
+  <text x="22" y="592" fill="#d7dbe8"><tspan>  HTML               █░░░░░░░░░░░░░░░░░░ 0.9%</tspan></text>
+  <text x="22" y="612" fill="#d7dbe8"><tspan>  JSON               █░░░░░░░░░░░░░░░░░░ 0.4%</tspan></text>
+  <text x="22" y="632" fill="#d7dbe8"><tspan>  Handlebars         █░░░░░░░░░░░░░░░░░░ 0.2%</tspan></text>
+  <text x="22" y="652" fill="#5b6079"> </text>
+  <text x="22" y="672" fill="#d7dbe8"><tspan>  Hotspots (most churned files)</tspan></text>
+  <text x="22" y="692" fill="#d7dbe8"><tspan>  docs/api.html                                  79 commits </tspan><tspan fill="#4ade80">+16.5</tspan><tspan fill="#d7dbe8">k </tspan><tspan fill="#fb7185">-16.6</tspan><tspan fill="#d7dbe8">k</tspan></text>
+  <text x="22" y="712" fill="#d7dbe8"><tspan>  test/response.test.js                         104 commits </tspan><tspan fill="#4ade80">+3.7</tspan><tspan fill="#d7dbe8">k </tspan><tspan fill="#fb7185">-3.7</tspan><tspan fill="#d7dbe8">k</tspan></text>
+  <text x="22" y="732" fill="#d7dbe8"><tspan>  docs/guide.html                               107 commits </tspan><tspan fill="#4ade80">+3.1</tspan><tspan fill="#d7dbe8">k </tspan><tspan fill="#fb7185">-3.1</tspan><tspan fill="#d7dbe8">k</tspan></text>
+  <text x="22" y="752" fill="#d7dbe8"><tspan>  History.md                                    987 commits </tspan><tspan fill="#4ade80">+4.9</tspan><tspan fill="#d7dbe8">k </tspan><tspan fill="#fb7185">-1.3</tspan><tspan fill="#d7dbe8">k</tspan></text>
+  <text x="22" y="772" fill="#d7dbe8"><tspan>  docs/guide.1                                   85 commits </tspan><tspan fill="#4ade80">+2.7</tspan><tspan fill="#d7dbe8">k </tspan><tspan fill="#fb7185">-2.7</tspan><tspan fill="#d7dbe8">k</tspan></text>
+  <text x="22" y="792" fill="#d7dbe8"><tspan>  lib/response.js                               397 commits </tspan><tspan fill="#4ade80">+3.2</tspan><tspan fill="#d7dbe8">k </tspan><tspan fill="#fb7185">-2.2</tspan><tspan fill="#d7dbe8">k</tspan></text>
+  <text x="22" y="812" fill="#5b6079"> </text>
+  <text x="22" y="832" fill="#d7dbe8"><tspan>  Awards</tspan></text>
+  <text x="22" y="852" fill="#d7dbe8"><tspan>  👑 Tj Holowaychuk                 Most Valuable Committer</tspan></text>
+  <text x="22" y="872" fill="#d7dbe8"><tspan>  🦉 Douglas Christopher Wilson     Night Owl</tspan></text>
+  <text x="22" y="892" fill="#d7dbe8"><tspan>  🌅 Shivam Sharma                  Early Bird</tspan></text>
+  <text x="22" y="912" fill="#d7dbe8"><tspan>  🏖️ Robert Sköld                  Weekend Warrior</tspan></text>
+  <text x="22" y="932" fill="#d7dbe8"><tspan>  🐛 Tj Holowaychuk                 Bug Squasher</tspan></text>
+  <text x="22" y="952" fill="#d7dbe8"><tspan>  🧱 Tj Holowaychuk                 Heavy Lifter</tspan></text>
+  <text x="22" y="972" fill="#d7dbe8"><tspan>  🎭 Tj Holowaychuk                 Renaissance Developer</tspan></text>
+  <text x="22" y="992" fill="#5b6079"> </text>
+  <text x="22" y="1012" fill="#d7dbe8"><tspan>  Commits</tspan></text>
+  <text x="22" y="1032" fill="#d7dbe8"><tspan>  average subject 30 chars  ·  conventional 9%  ·  issue refs 6%</tspan></text>
+  <text x="22" y="1052" fill="#d7dbe8"><tspan>  top words deps, example, connect, request, closes, express, submodule, pull</tspan></text>
+  <text x="22" y="1072" fill="#5b6079"> </text>
+  <text x="22" y="1092" fill="#d7dbe8"><tspan>  bus factor  1 person covers 63% of the history</tspan></text>
+    </g>
+  </g>
+  <rect x="0.5" y="0.5" width="722" height="1117" rx="14" fill="none" stroke="#242438"/>
+</svg>

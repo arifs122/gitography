@@ -1,0 +1,54 @@
+
+  gitography ── expressjs/express
+  ──────────────────────────────────────────────────────────────────────────
+  6,182 commits  ·  400 contributors  ·  214 files  ·  17 years, 4 months
+  +137,354 / -110,052 lines  ·  1,369 active days  ·  6.8 commits/week
+
+  activity  ▁▁▂▁▂▅▁▂▁▅▁▁▂▅█▁▂▁▁█▅▂▅▁▅▃▅▁▁▁▁▂▂▁▄▁▂▅▁▁▁▂▆▁▂▄▁▁▂▁▁▅▁▁▆▂▁▄█▂  last 60 weeks
+  busiest   3 Dec 2009 · 77 commits
+  streak    15 days (13 May 2011 → 27 May 2011)
+
+  Contributors
+   1. Tj Holowaychuk         ██████████████████   3,881  62.8%
+   2. Douglas Christopher W… ██████░░░░░░░░░░░░   1,232  19.9%
+   3. Jonathan Ong           █░░░░░░░░░░░░░░░░░░      84  1.4%
+   4. Roman Shtylman         █░░░░░░░░░░░░░░░░░░      70  1.1%
+   5. dependabot[bot]        █░░░░░░░░░░░░░░░░░░      55  0.9%
+   6. Ulises Gascón          █░░░░░░░░░░░░░░░░░░      46  0.7%
+   7. Wes Todd               █░░░░░░░░░░░░░░░░░░      45  0.7%
+   8. Aaron Heckmann         █░░░░░░░░░░░░░░░░░░      44  0.7%
+   9. csausdev               █░░░░░░░░░░░░░░░░░░      34  0.5%
+  10. ciaranj                █░░░░░░░░░░░░░░░░░░      26  0.4%
+       … and 385 more
+
+  Languages (78% code)
+  JavaScript         ██████████████████ 77.2%
+  Markdown           ████░░░░░░░░░░░░░░ 18.8%
+  YAML               █░░░░░░░░░░░░░░░░░ 2.2%
+  HTML               █░░░░░░░░░░░░░░░░░░ 0.9%
+  JSON               █░░░░░░░░░░░░░░░░░░ 0.4%
+  Handlebars         █░░░░░░░░░░░░░░░░░░ 0.2%
+
+  Hotspots (most churned files)
+  docs/api.html                                  79 commits +16.5k -16.6k
+  test/response.test.js                         104 commits +3.7k -3.7k
+  docs/guide.html                               107 commits +3.1k -3.1k
+  History.md                                    987 commits +4.9k -1.3k
+  docs/guide.1                                   85 commits +2.7k -2.7k
+  lib/response.js                               397 commits +3.2k -2.2k
+
+  Awards
+  👑 Tj Holowaychuk                 Most Valuable Committer
+  🦉 Douglas Christopher Wilson     Night Owl
+  🌅 Shivam Sharma                  Early Bird
+  🏖️ Robert Sköld                  Weekend Warrior
+  🐛 Tj Holowaychuk                 Bug Squasher
+  🧱 Tj Holowaychuk                 Heavy Lifter
+  🎭 Tj Holowaychuk                 Renaissance Developer
+
+  Commits
+  average subject 30 chars  ·  conventional 9%  ·  issue refs 6%
+  top words deps, example, connect, request, closes, express, submodule, pull
+
+  bus factor  1 person covers 63% of the history
+
