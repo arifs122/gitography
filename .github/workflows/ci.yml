@@ -1,0 +1,57 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: test (node ${{ matrix.node }} on ${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        node: ['18', '20', '22']
+        include:
+          - os: windows-latest
+            node: '22'
+          - os: macos-latest
+            node: '22'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # gitography reads git history; full clones keep the fixtures honest
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Show environment
+        run: node --version && git --version
+
+      - name: Install
+        run: npm install --no-audit --no-fund --ignore-scripts
+
+      - name: Test
+        run: npm test
+
+      - name: Smoke test the CLI on this repository
+        run: |
+          node bin/gitography.js . --format text --no-color
+          node bin/gitography.js . --format html -o /tmp/report.html
+          node bin/gitography.js . --format json -o /tmp/report.json
+
+      - name: Assert the HTML report is self-contained
+        if: runner.os == 'Linux'
+        run: |
+          if grep -E '<script[^>]+src=|<link[^>]+rel="?stylesheet' /tmp/report.html; then
+            echo "the report references external assets" >&2
+            exit 1
+          fi
+          echo "report is self-contained"
