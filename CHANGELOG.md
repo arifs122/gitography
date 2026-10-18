@@ -33,7 +33,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `--theme`, `--title`, `--subtitle`, `--open`, `--quiet` and `--no-color`.
 - Programmatic API: `collect()`, `analyze()`, `renderHtml()`, `renderText()`,
   `renderMarkdown()`.
-- 71 tests covering parsing, language detection, statistics, rendering, HTML
+- 79 tests covering parsing, language detection, statistics, rendering, HTML
   escaping and the CLI, including end-to-end tests against real temporary
   repositories.
 - `tools/render-terminal-svg.mjs` to regenerate the README terminal strip.

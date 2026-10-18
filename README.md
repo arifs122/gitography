@@ -260,7 +260,7 @@ gitography/
 │   ├── render-markdown.js     README-friendly report
 │   ├── colors.js              tiny ANSI helper
 │   └── util.js                dates, numbers, escaping, path helpers
-├── test/                      71 tests, no network, no fixtures to download
+├── test/                      79 tests, no network, no fixtures to download
 ├── tools/
 │   ├── render-terminal-svg.mjs  regenerate the terminal strip above
 │   └── verify-report.mjs        assert a report makes no external requests

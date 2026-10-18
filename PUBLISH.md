@@ -78,7 +78,7 @@ documentation, so `test/`, `tools/` and `docs/` stay out of the tarball.
 Run these from this folder and make sure they are all green:
 
 ```bash
-npm test                                  # 71 tests, no install needed
+npm test                                  # 79 tests, no install needed
 node bin/gitography.js . --format text    # the CLI on itself
 node tools/verify-report.mjs docs/demo/express.html
 ```
