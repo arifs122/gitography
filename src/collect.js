@@ -54,7 +54,7 @@ export function git(cwd, args, options = {}) {
     timeout = DEFAULT_TIMEOUT_MS,
   } = options;
 
-  const result = spawnSync('git', args, {
+  const result = spawnSync('git', ['-c', 'core.quotepath=false', ...args], {
     cwd,
     encoding: 'utf8',
     maxBuffer,
@@ -180,6 +180,44 @@ export function isRepository(dir) {
 }
 
 /**
+ * Decode a path that git chose to quote.
+ *
+ * Even with `core.quotepath=false`, git C-quotes paths containing control
+ * characters (or a quote), so `"a\tb.js"` and `"src/\303\274.js"` arrive
+ * escaped. We turn those back into real UTF-8 text.
+ *
+ * @param {string} raw
+ * @returns {string}
+ */
+export function unquoteGitPath(raw) {
+  const value = String(raw);
+  if (value.length < 2 || !value.startsWith('"') || !value.endsWith('"')) return value;
+
+  const inner = value.slice(1, -1);
+  const bytes = [];
+  const escapes = { n: 0x0a, t: 0x09, r: 0x0d, '"': 0x22, '\\': 0x5c, a: 0x07, b: 0x08, f: 0x0c, v: 0x0b };
+
+  for (let index = 0; index < inner.length; index += 1) {
+    const char = inner[index];
+    if (char === '\\') {
+      const octal = inner.slice(index + 1, index + 4);
+      if (/^[0-7]{3}$/.test(octal)) {
+        bytes.push(Number.parseInt(octal, 8));
+        index += 3;
+        continue;
+      }
+      const next = inner[index + 1];
+      bytes.push(escapes[next] ?? next.charCodeAt(0));
+      index += 1;
+      continue;
+    }
+    for (const byte of Buffer.from(char, 'utf8')) bytes.push(byte);
+  }
+
+  return Buffer.from(bytes).toString('utf8');
+}
+
+/**
  * Parse raw `git log --numstat` output into commit records.
  *
  * @param {string} stdout
@@ -219,7 +257,7 @@ export function parseLog(stdout) {
 
         const addedRaw = line.slice(0, firstTab);
         const deletedRaw = line.slice(firstTab + 1, secondTab);
-        const filePath = normalizePath(line.slice(secondTab + 1));
+        const filePath = normalizePath(unquoteGitPath(line.slice(secondTab + 1)));
         const binary = addedRaw === '-' || deletedRaw === '-';
         const added = binary ? 0 : Number(addedRaw) || 0;
         const deleted = binary ? 0 : Number(deletedRaw) || 0;
@@ -265,7 +303,7 @@ export function parseTree(stdout) {
     const tab = line.indexOf('\t');
     if (tab === -1) continue;
     const meta = line.slice(0, tab).split(/\s+/);
-    const filePath = normalizePath(line.slice(tab + 1));
+    const filePath = normalizePath(unquoteGitPath(line.slice(tab + 1)));
     // <mode> <type> <object> <size>\t<file>
     if (meta[1] !== 'blob') continue; // skip submodules and trees
     files.push({ path: filePath, size: Number(meta[3]) || 0 });
@@ -315,9 +353,20 @@ export function collect(dir, options = {}) {
   const { owner, name } = deriveRepositoryName(root, remoteWebUrl);
 
   const gitVersion = gitOptional(root, ['--version'], runOptions);
-  const branch = gitOptional(root, ['rev-parse', '--abbrev-ref', 'HEAD'], runOptions);
-  const head = gitOptional(root, ['rev-parse', 'HEAD'], runOptions);
+  const branchRaw = gitOptional(root, ['branch', '--show-current'], runOptions);
+  // `--verify --quiet` is important: in a freshly initialised repository
+  // `git rev-parse HEAD` *prints "HEAD" to stdout* and exits non-zero, which
+  // would otherwise look like a valid revision.
+  const headRaw = gitOptional(root, ['rev-parse', '--verify', '--quiet', 'HEAD'], runOptions);
+  const head = headRaw && /^[0-9a-f]{7,40}$/i.test(headRaw.trim()) ? headRaw.trim() : null;
+  const branch = branchRaw || (head ? '(detached)' : null);
   const isShallow = gitOptional(root, ['rev-parse', '--is-shallow-repository'], runOptions) === 'true';
+
+  if (head === null) {
+    warnings.push(
+      'This repository has no commits yet, so there is no history to visualise.',
+    );
+  }
 
   if (isShallow) {
     warnings.push(
@@ -367,7 +416,7 @@ export function collect(dir, options = {}) {
     owner,
     remoteUrl,
     remoteWebUrl,
-    branch: branch === 'HEAD' ? '(detached)' : branch || 'unknown',
+    branch: branch || 'unknown',
     head: head || null,
     shortHead: head ? head.slice(0, 7) : null,
     isShallow,

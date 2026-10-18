@@ -254,7 +254,10 @@ export function run(argv = process.argv.slice(2), io = {}) {
   } catch (error) {
     if (error instanceof GitError) {
       writeErr(`${red('gitography:')} ${error.message}\n`);
-      if (error.stderr) writeErr(`${dim(error.stderr.split('\n')[0])}\n`);
+      const firstStderrLine = error.stderr.split('\n')[0];
+      if (firstStderrLine && firstStderrLine !== error.message) {
+        writeErr(`${dim(firstStderrLine)}\n`);
+      }
       return 2;
     }
     writeErr(`${red('gitography: unexpected error:')} ${error.message}\n`);

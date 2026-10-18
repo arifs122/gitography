@@ -12,6 +12,7 @@ import {
   parseTree,
   remoteToWebUrl,
   resolveTarget,
+  unquoteGitPath,
 } from '../src/collect.js';
 import { createTempDir, createTempRepo, gitAvailable } from './helpers.js';
 
@@ -96,6 +97,27 @@ test('parseTree skips submodules and keeps blob sizes', () => {
   assert.deepEqual(files[0], { path: 'src/a.js', size: 4096 });
   assert.deepEqual(files[1], { path: 'bin/run.sh', size: 100 });
   assert.deepEqual(parseTree(''), []);
+});
+
+test('git-quoted paths are decoded back to UTF-8', () => {
+  assert.equal(unquoteGitPath('src/plain.js'), 'src/plain.js');
+  assert.equal(unquoteGitPath('"src/\\303\\274\\303\\247.js"'), 'src/üç.js');
+  assert.equal(unquoteGitPath('"a\\tb.js"'), 'a\tb.js');
+  assert.equal(unquoteGitPath('"quote\\".js"'), 'quote".js');
+  assert.equal(unquoteGitPath('"back\\\\slash.js"'), 'back\\slash.js');
+});
+
+test('parseLog and parseTree decode quoted unicode paths', () => {
+  const log = [
+    R + [SHA_A, 'Ada', 'ada@example.com', '2023-01-15T10:00:00Z', '', 'Add file'].join(F),
+    '1\t0\t"src/\\303\\274.js"',
+  ].join('\n');
+
+  const commits = parseLog(log);
+  assert.equal(commits[0].files[0].path, 'src/ü.js');
+
+  const tree = parseTree('100644 blob abc1234567 12\t"src/\\303\\274.js"');
+  assert.deepEqual(tree, [{ path: 'src/ü.js', size: 12 }]);
 });
 
 test('resolveTarget rejects missing paths and accepts files', () => {
