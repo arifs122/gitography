@@ -14,10 +14,10 @@
 
 import { readFileSync, writeFileSync } from 'node:fs';
 
-const [, , inputPath, outputPath, fontSizeArg] = process.argv;
+const [, , inputPath, outputPath, fontSizeArg, titleArg] = process.argv;
 
 if (!inputPath || !outputPath) {
-  console.error('usage: render-terminal-svg.mjs <input.txt> <output.svg> [fontSize]');
+  console.error('usage: render-terminal-svg.mjs <input.txt> <output.svg> [fontSize] [windowTitle]');
   process.exit(1);
 }
 
@@ -38,6 +38,8 @@ const LINE_HEIGHT = Math.round(FONT_SIZE * 1.5);
 const PADDING_X = 22;
 const CHROME_HEIGHT = 38;
 const PADDING_BOTTOM = 20;
+
+const WINDOW_TITLE = titleArg ?? 'gitography';
 
 const raw = readFileSync(inputPath, 'utf8');
 // eslint-disable-next-line no-control-regex
@@ -117,7 +119,7 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${hei
     <circle cx="20" cy="${CHROME_HEIGHT / 2}" r="6" fill="#ff5f57"/>
     <circle cx="40" cy="${CHROME_HEIGHT / 2}" r="6" fill="#febc2e"/>
     <circle cx="60" cy="${CHROME_HEIGHT / 2}" r="6" fill="#28c840"/>
-    <text x="${width / 2}" y="${CHROME_HEIGHT / 2 + 4}" fill="${COLORS.faint}" font-size="12" text-anchor="middle" font-family="ui-monospace, Consolas, monospace">gitography</text>
+    <text x="${width / 2}" y="${CHROME_HEIGHT / 2 + 4}" fill="${COLORS.faint}" font-size="12" text-anchor="middle" font-family="ui-monospace, Consolas, monospace">${escapeXml(WINDOW_TITLE)}</text>
     <g font-family="ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', monospace" font-size="${FONT_SIZE}" xml:space="preserve">
   ${body}
     </g>
