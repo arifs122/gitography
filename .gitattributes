@@ -1,0 +1,13 @@
+# Keep everything text-based as LF so the zero-dependency tool behaves the same
+# on every platform.
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+*.pdf binary
+
+# Generated demo output is committed on purpose, but never diffed as text.
+docs/demo/*.html linguist-generated=true
