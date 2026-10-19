@@ -539,7 +539,7 @@ function punchcardSvg(matrix) {
   return `<div class="chart-scroll">${svgBox(width, height, `
     <defs>
       <linearGradient id="punch" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stop-color="#7c5cff"/><stop offset="100%" stop-color="#22d3ee"/>
+        <stop offset="0%" style="stop-color:var(--chart-a)"/><stop offset="100%" style="stop-color:var(--chart-b)"/>
       </linearGradient>
     </defs>
     ${rects}${hourLabels}${dayLabels}
@@ -658,11 +658,11 @@ function areaChartSvg(values, keys, options = {}) {
   return `<div class="chart-scroll">${svgBox(width, height, `
     <defs>
       <linearGradient id="area" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#7c5cff" stop-opacity="0.55"/>
-        <stop offset="100%" stop-color="#22d3ee" stop-opacity="0.02"/>
+        <stop offset="0%" style="stop-color:var(--chart-a)" stop-opacity="0.55"/>
+        <stop offset="100%" style="stop-color:var(--chart-b)" stop-opacity="0.02"/>
       </linearGradient>
       <linearGradient id="stroke" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0%" stop-color="#7c5cff"/><stop offset="100%" stop-color="#22d3ee"/>
+        <stop offset="0%" style="stop-color:var(--chart-a)"/><stop offset="100%" style="stop-color:var(--chart-b)"/>
       </linearGradient>
     </defs>
     ${gridLines}
@@ -852,6 +852,7 @@ const STYLES = `
   --border:rgba(255,255,255,.085);--border-strong:rgba(255,255,255,.16);
   --text:#eceef7;--muted:#9ba1b8;--faint:#6d7391;
   --violet:#7c5cff;--cyan:#22d3ee;--pink:#f472b6;--amber:#fbbf24;--green:#34d399;--red:#fb7185;
+  --chart-a:#7c5cff;--chart-b:#22d3ee;
   --radius:18px;--radius-sm:12px;--maxw:1180px;
   --shadow:0 24px 60px -30px rgba(0,0,0,.85);
 }
@@ -859,6 +860,9 @@ html[data-theme="light"]{
   --bg:#f5f6fb;--bg-soft:#ffffff;--panel:rgba(15,18,40,.028);--panel-strong:rgba(15,18,40,.05);
   --border:rgba(20,24,60,.10);--border-strong:rgba(20,24,60,.18);
   --text:#131629;--muted:#555c7a;--faint:#858ca6;
+  /* Deeper accents: the dark theme's neon palette is unreadable on paper. */
+  --violet:#6d28d9;--cyan:#0e7490;--pink:#be185d;--amber:#a16207;--green:#047857;--red:#be123c;
+  --chart-a:#6d28d9;--chart-b:#0e7490;
   --shadow:0 20px 45px -28px rgba(20,24,60,.35);
 }
 html{-webkit-text-size-adjust:100%}
