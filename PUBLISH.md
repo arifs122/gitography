@@ -98,3 +98,19 @@ A few small things that make a new repository look alive:
 - pin the repository on your profile;
 - the CI badge in the README starts working as soon as the first workflow run
   finishes.
+
+---
+
+## Make the repository look alive
+
+Two minutes of settings work, and the highest-leverage thing you can do for a
+repository you want people to star:
+
+1. **Social preview image** — GitHub renders a preview card whenever the
+   repository is linked in a chat, a tweet or an issue. Go to
+   **Settings → General → Social preview → Upload an image** and use
+   `docs/screenshots/hero.png`. GitHub crops to 1280x640, so check that the top-left region still
+   reads well.
+2. **Description** — paste the one-line pitch from the top of the README.
+3. **Topics** — the tags that make the repository discoverable in search.
+4. **Pin it** on your profile, and link it from any project that uses it.
