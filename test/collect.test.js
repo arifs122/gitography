@@ -12,6 +12,7 @@ import {
   parseTree,
   remoteToWebUrl,
   resolveTarget,
+  normalizeDateBound,
   unquoteGitPath,
 } from '../src/collect.js';
 import { createTempDir, createTempRepo, gitAvailable } from './helpers.js';
@@ -173,6 +174,17 @@ test('collect reads a real repository end to end', { skip: !gitAvailable() }, ()
   } finally {
     repo.cleanup();
   }
+});
+
+test('bare dates are normalised to a deterministic day boundary', () => {
+  assert.equal(normalizeDateBound('2024-01-01', 'since'), '2024-01-01T00:00:00');
+  assert.equal(normalizeDateBound('2024-01-31', 'until'), '2024-01-31T23:59:59');
+  assert.equal(normalizeDateBound(' 2024-01-01 ', 'since'), '2024-01-01T00:00:00');
+  // Anything that already carries a time, or a relative date, is passed through.
+  assert.equal(normalizeDateBound('2024-01-01T10:00:00Z', 'since'), '2024-01-01T10:00:00Z');
+  assert.equal(normalizeDateBound('2 weeks ago', 'since'), '2 weeks ago');
+  assert.equal(normalizeDateBound('', 'since'), '');
+  assert.equal(normalizeDateBound(null, 'until'), null);
 });
 
 test('collect honours --since, --until, --limit and --no-merges', { skip: !gitAvailable() }, () => {

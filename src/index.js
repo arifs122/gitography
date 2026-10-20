@@ -9,7 +9,7 @@
  * ```
  */
 
-export { collect, collectIdentity, findRepositoryRoot, isRepository, parseLog, parseTree, remoteToWebUrl, GitError } from './collect.js';
+export { collect, collectIdentity, findRepositoryRoot, isRepository, normalizeDateBound, parseLog, parseTree, remoteToWebUrl, GitError } from './collect.js';
 export { analyze } from './analyze.js';
 export { computeAwards } from './awards.js';
 export { renderHtml } from './render-html.js';

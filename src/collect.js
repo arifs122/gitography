@@ -21,24 +21,6 @@ const DEFAULT_MAX_BUFFER = 1024 * 1024 * 512; // 512 MB of stdout
 const DEFAULT_TIMEOUT_MS = 10 * 60 * 1000;
 
 /**
- * Expand a bare `YYYY-MM-DD` bound into an explicit time-of-day.
- *
- * Git parses dates with approxidate, which fills the fields a string leaves out
- * from the *current* clock. `--since=2023-02-01` therefore means "2023-02-01 at
- * whatever time it is right now", silently dropping that morning's commits.
- * A date-only filter should cover the whole day, so pin the boundary instead.
- *
- * @param {string} value raw CLI value
- * @param {'since' | 'until'} edge which end of the day to use
- * @returns {string}
- */
-function expandDateBound(value, edge) {
-  const match = /^(\d{4}-\d{2}-\d{2})$/.exec(value.trim());
-  if (!match) return value;
-  return `${match[1]}T${edge === 'until' ? '23:59:59' : '00:00:00'}`;
-}
-
-/**
  * Error type for anything git related, so the CLI can show a friendly message
  * instead of a stack trace.
  */
@@ -330,6 +312,28 @@ export function parseTree(stdout) {
 }
 
 /**
+ * Normalise a bare `YYYY-MM-DD` bound before handing it to git.
+ *
+ * Git's approxidate fills in the *current time of day* when only a date is
+ * given, which makes `--since 2024-01-01` mean "2024-01-01 at the time you ran
+ * the command". That is surprising and makes reports irreproducible, so a bare
+ * date means the start of the day for `--since` and the end of the day for
+ * `--until`.
+ *
+ * @param {string} value
+ * @param {'since' | 'until'} edge
+ * @returns {string}
+ */
+export function normalizeDateBound(value, edge) {
+  if (!value) return value;
+  const text = String(value).trim();
+  if (/^\d{4}-\d{2}-\d{2}$/.test(text)) {
+    return edge === 'until' ? `${text}T23:59:59` : `${text}T00:00:00`;
+  }
+  return text;
+}
+
+/**
  * Collect the entire dataset for a repository.
  *
  * @param {string} dir directory inside the repository
@@ -394,8 +398,8 @@ export function collect(dir, options = {}) {
 
   const args = ['log', '--numstat', '--no-renames', `--pretty=format:${LOG_FORMAT}`];
   if (limit > 0) args.push('-n', String(limit));
-  if (since) args.push(`--since=${expandDateBound(since, 'since')}`);
-  if (until) args.push(`--until=${expandDateBound(until, 'until')}`);
+  if (since) args.push(`--since=${normalizeDateBound(since, 'since')}`);
+  if (until) args.push(`--until=${normalizeDateBound(until, 'until')}`);
   if (all) args.push('--all');
   if (!includeMerges) args.push('--no-merges');
 

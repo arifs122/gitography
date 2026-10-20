@@ -6,9 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Added
+### Fixed
 
-- Nothing yet.
+- `--since` and `--until` now treat a bare `YYYY-MM-DD` as the start (or end) of
+  that day. Git's own date parser fills in the *current time of day*, which made
+  `--since 2024-01-01` return different results depending on the hour you ran
+  the command. The behaviour is now deterministic and testable, and `--until`
+  includes the named day.
 
 ## [0.1.0] — 2026-10-19
 

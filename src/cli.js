@@ -40,7 +40,9 @@ const HELP = `
   Scan
         --limit <n>          maximum commits to scan          (default: 25000)
         --since <date>       only analyse commits after this date
+                             (a bare YYYY-MM-DD means the start of that day)
         --until <date>       only analyse commits before this date
+                             (a bare YYYY-MM-DD means the end of that day)
         --all                include every branch and ref (default: current HEAD)
         --no-merges          exclude merge commits from the analysis
         --top <n>            contributors and hotspots to show (default: 15 / 20)
