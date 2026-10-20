@@ -2,11 +2,14 @@
 
 # gitography
 
-**Spotify Wrapped for your Git repository.**
+**A year-in-review report for your Git repository.**
 
 Point it at any repository, get back a beautiful, interactive, single-file report
 of how that codebase was actually built — who wrote it, when, how the habit
 looks, and which files keep changing.
+
+If you have seen the wrapped-style recaps that appear every December, you know
+the format: this is that, for a codebase.
 
 [![npm](https://img.shields.io/npm/v/gitography?color=7c5cff&label=npm)](https://www.npmjs.com/package/gitography)
 [![dependencies](https://img.shields.io/badge/runtime%20dependencies-0-22d3ee)](https://github.com/arifs122/gitography)
@@ -326,3 +329,8 @@ there is nothing to install.
 ## License
 
 [MIT](LICENSE) © arifs122
+
+"Spotify" and "Spotify Wrapped" are trademarks of Spotify AB. gitography is an
+independent project and is not affiliated with, endorsed by, or sponsored by
+Spotify. The comparison is descriptive: the report borrows the *year-in-review*
+format, not any Spotify asset, code or branding.

@@ -90,8 +90,8 @@ Confirm the report is still self-contained (the last command prints
 
 A few small things that make a new repository look alive:
 
-- add the repository description: *"Spotify Wrapped for your Git repository —
-  zero-dependency CLI that turns any repo's history into a self-contained
+- add the repository description: *"A year-in-review report for any Git
+  repository — a zero-dependency CLI that turns history into a self-contained
   interactive HTML report"*;
 - add topics: `git`, `cli`, `visualization`, `analytics`, `report`, `html`,
   `zero-dependencies`, `developer-tools`, `wrapped`;

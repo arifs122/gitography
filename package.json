@@ -1,7 +1,7 @@
 {
   "name": "gitography",
   "version": "0.1.0",
-  "description": "Spotify Wrapped for your Git repository. A zero-dependency CLI that turns any repo's history into a beautiful, self-contained interactive HTML report.",
+  "description": "A year-in-review report for any Git repository. A zero-dependency CLI that turns a repo's history into a beautiful, self-contained interactive HTML report.",
   "type": "module",
   "bin": {
     "gitography": "bin/gitography.js"
