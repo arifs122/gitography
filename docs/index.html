@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>gitography — a year-in-review report for any Git repository</title>
+<meta name="description" content="A zero-dependency CLI that turns any Git repository's history into a self-contained, interactive HTML report.">
+<meta property="og:title" content="gitography">
+<meta property="og:description" content="A year-in-review report for any Git repository. Zero dependencies, fully offline, one HTML file.">
+<meta property="og:image" content="screenshots/hero.png">
+<style>
+  :root{--bg:#07070e;--panel:rgba(255,255,255,.04);--border:rgba(255,255,255,.1);--text:#eceef7;--muted:#9ba1b8;--faint:#6d7391;--violet:#7c5cff;--cyan:#22d3ee;--pink:#f472b6}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:"Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,Inter,Arial,sans-serif;line-height:1.55}
+  .glow{position:fixed;border-radius:50%;filter:blur(100px);opacity:.25;pointer-events:none}
+  .a{width:600px;height:600px;top:-260px;left:-160px;background:#7c5cff}
+  .b{width:520px;height:520px;top:120px;right:-220px;background:#22d3ee;opacity:.18}
+  .c{width:480px;height:480px;bottom:-240px;left:40%;background:#f472b6;opacity:.12}
+  main{position:relative;max-width:960px;margin:0 auto;padding:72px 24px 80px}
+  .eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);font-weight:600;margin:0 0 16px}
+  h1{margin:0;font-size:clamp(38px,7vw,68px);line-height:1.02;letter-spacing:-.035em;font-weight:800;
+     background:linear-gradient(96deg,#7c5cff 0%,#22d3ee 55%,#f472b6 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .lede{color:var(--muted);font-size:18px;max-width:62ch;margin:18px 0 0}
+  .cta{display:flex;flex-wrap:wrap;gap:12px;margin:30px 0 0}
+  .btn{display:inline-block;padding:13px 22px;border-radius:12px;font-weight:700;text-decoration:none;font-size:15px}
+  .primary{background:linear-gradient(96deg,#7c5cff,#22d3ee);color:#06060c}
+  .ghost{border:1px solid var(--border);background:var(--panel);color:var(--text)}
+  .shot{margin:46px 0 0;border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:0 30px 80px -40px #000}
+  .shot img{display:block;width:100%}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:44px}
+  .card{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:20px}
+  .card h3{margin:0 0 8px;font-size:15px}
+  .card p{margin:0;color:var(--muted);font-size:14px}
+  pre{background:#0c0c18;border:1px solid var(--border);border-radius:12px;padding:16px 18px;overflow-x:auto;margin:14px 0 0}
+  code{font-family:ui-monospace,Consolas,monospace;font-size:13.5px;color:#d7dbe8}
+  .foot{margin-top:56px;padding-top:24px;border-top:1px solid var(--border);color:var(--faint);font-size:13px;display:flex;gap:18px;flex-wrap:wrap}
+  .foot a{color:var(--muted)}
+  @media (prefers-reduced-motion:no-preference){.shot{animation:rise .7s cubic-bezier(.22,1,.36,1) both}@keyframes rise{from{opacity:0;transform:translateY(16px)}}}
+</style>
+</head>
+<body>
+<div class="glow a"></div><div class="glow b"></div><div class="glow c"></div>
+<main>
+  <p class="eyebrow">Live demo · zero dependencies · fully offline</p>
+  <h1>Your Git history,<br>wrapped.</h1>
+  <p class="lede">Point <strong>gitography</strong> at any repository and get a beautiful, interactive, single-file
+    report: when the work happened, who did it, which files keep changing, and the awards nobody asked for.</p>
+
+  <div class="cta">
+    <a class="btn primary" href="demo/express.html">Open the live report →</a>
+    <a class="btn ghost" href="https://github.com/arifs122/gitography">Source on GitHub</a>
+    <a class="btn ghost" href="https://www.npmjs.com/package/gitography">npm</a>
+  </div>
+
+  <pre><code>npx gitography          # inside any repository</code></pre>
+
+  <figure class="shot"><img src="screenshots/hero.png" alt="gitography report header with commit, contributor and churn statistics"></figure>
+
+  <section class="grid">
+    <div class="card"><h3>Self-contained</h3><p>One HTML file with inline CSS, inline SVG charts and no network requests. Attach it to a release or open it on a plane.</p></div>
+    <div class="card"><h3>Zero dependencies</h3><p>No install tree, no native build. It shells out to the <code>git</code> you already have.</p></div>
+    <div class="card"><h3>Works on private repos</h3><p>No GitHub API, no token, no upload. Your history never leaves the machine.</p></div>
+  </section>
+
+  <p class="foot">
+    <span>The demo report above is <code>expressjs/express</code>: 6,182 commits, 400 contributors, 17 years.</span>
+    <a href="https://github.com/arifs122/gitography/blob/main/README.md">README</a>
+    <a href="https://github.com/arifs122/gitography/blob/main/LICENSE">MIT</a>
+  </p>
+</main>
+</body>
+</html>

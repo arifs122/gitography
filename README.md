@@ -11,6 +11,8 @@ looks, and which files keep changing.
 If you have seen the wrapped-style recaps that appear every December, you know
 the format: this is that, for a codebase.
 
+**Live demo:** [the report for `expressjs/express` — 6,182 commits, 400 people, 17 years →](https://arifs122.github.io/gitography/demo/express.html)
+
 [![npm](https://img.shields.io/npm/v/gitography?color=7c5cff&label=npm)](https://www.npmjs.com/package/gitography)
 [![dependencies](https://img.shields.io/badge/runtime%20dependencies-0-22d3ee)](https://github.com/arifs122/gitography)
 [![tests](https://img.shields.io/github/actions/workflow/status/arifs122/gitography/ci.yml?label=tests)](https://github.com/arifs122/gitography/actions)
